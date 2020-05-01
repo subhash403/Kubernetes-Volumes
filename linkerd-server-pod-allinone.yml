@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: l5d-test-server
+  labels:
+    app: l5d-test
+spec:
+  containers:
+    - name: server
+      image: paddycarey/go-echo
+      imagePullPolicy: IfNotPresent
+      ports:
+        - name: http
+          containerPort: 8000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: l5d-test-server
+spec:
+  selector:
+    app: l5d-test
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8000
+    protocol: TCP
