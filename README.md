@@ -1,7 +1,7 @@
 # Kubernetes-Volumes
-#emptyDir{}
-#hostPath
-#nfs
-#pv
-#pvc
+# emptyDir{}
+# hostPath
+# nfs
+# pv
+# pvc
 
