@@ -1,0 +1,36 @@
+https://tachingchen.com/blog/kubernetes-rolling-update-with-deployment/
+
+kubectl api-resources -o wide
+
+kubectl set image deployment <deployment> <container>=<image> --record
+kubectl replace -f <yaml> --record
+kubectl edit deployment <deployment> --record
+kubectl rollout status deployment nginx
+kubectl rollout pause deployment <deployment>
+kubectl rollout resume deployment <deployment>
+
+# to previous revision
+ kubectl rollout undo deployment <deployment>
+# to specific revision
+kubectl rollout undo deployment <deployment> --to-revision=<revision>
+
+kubectl rollout history deployment/nginx
+
+#For nslookup test
+kubectl run --generator=run-pod/v1 --rm utils -it --image eddiehale/utils bash
+
+# For Elk
+https://www.digitalocean.com/community/tutorials/how-to-set-up-an-elasticsearch-fluentd-and-kibana-efk-logging-stack-on-kubernetes
+
+#Weave
+https://www.weave.works/docs/net/latest/kubernetes/kube-addon/
+
+#Kubernetes with var-lib-dir restore 
+kubectl taint nodes --all node-role.kubernetes.io/master-
+kubeadm token create --print-join-command
+https://labs.consol.de/kubernetes/2018/05/25/kubeadm-backup.html
+kubeadm init --apiserver-advertise-address=192.168.0.104 --pod-network-cidr=192.168.0.0/24 --ignore-preflight-errors=DirAvailable--var-lib-etcd
+
+#Nginx Ingress
+https://devopscube.com/setup-ingress-kubernetes-nginx-controller/
+
