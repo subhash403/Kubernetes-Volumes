@@ -1,0 +1,21 @@
+#Privatekey of a user
+openssl genrsa -out <name of key>.key 2048
+
+#Certificate signing Request (CSR):
+openssl req -new -key  subhash.key -out subhash.csr -subj "/CN=subhash/O=finance"
+
+#For user ca.crt and ca.key keys we need to logint o master and /etc/kubernetes/pki copy those to where the user keys you have 
+
+openssl x509 -req -in subhash.csr -CA subhash.crt -CAkey subhash.key -CAcreateserial -out subhash.crt -days 365 
+
+kubectl --kubeconfig subhash.kubeconfig config set-cluster kubernetes --server httts://ip:443 --certificate-authority=ca.crt
+
+kubectl config view
+
+kubectl --kubeconfig subhash.kubeconfig config set-credentials subhash --client-certificate subhash.crt --client-key subhash.key 
+
+kubectl --kubeconfig subhash.kubeconfig config set-context subhash-kubernetes --cluster kubernetes --namespace finance  --user subhash
+
+kubectl create role subhash --verb=get,list,watch --resource=pods --namespace=finance
+
+kubectl create rolebinding subhash-role-binding --role=subhash --user=subhash --namespace finance

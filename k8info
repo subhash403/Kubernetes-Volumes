@@ -33,3 +33,109 @@ kubeadm init --apiserver-advertise-address=192.168.0.104 --pod-network-cidr=192.
 
 #Nginx Ingress
 https://devopscube.com/setup-ingress-kubernetes-nginx-controller/
+
+
+
+
+#Taint and Tolerations
+
+kubectl taint nodes node-name key=value:taint-effect
+
+Taint Effects:- 
+  	NoSchedule
+  	PreferNoSchedule
+  	NoExecute
+kubectl describe node subhash |grep Taint
+
+
+
+
+#ConfigMap
+
+kubectl create configmap <map name> <data source>
+Path to Dir/file ---> --from-file
+key-value-par  ---> --from-literal
+
+
+env:
+  - name: SECRET-USERNAME
+    valueFrom:
+     configMapRef:
+       name: special-config
+       key: special.how
+
+
+
+
+#Secret
+kubectl create secret [Type] [Name] [Data]
+Type:
+	generic: 
+    		* File
+    		* Directory 
+    		* Lieral Values
+	docker-registry
+
+
+	tls
+
+Data
+Path to Dir/file ---> --from-file
+key-value-par  ---> --from-literal
+
+## Secret assignd to pods using env variable ####3
+env: 
+  - name: SECRET-USERNAME
+    valueFrom: 
+     secretKeyRef:
+       name: mysecret
+       key: username
+  - name: SECRET-USERNAME
+    valueFrom:
+     secretKeyRef:
+       name: mysecret
+       key: password
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
