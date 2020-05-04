@@ -1,0 +1,7 @@
+helm create <chart name>
+helm install --name=my-nginx . --set replicaCount=2
+helm inspect values .
+helm list
+helm inspect values . > /tmp/nginx.values
+helm install --name=my-nginx . --values /tmp/nginx.values
+helm rollback my-nginx 2
