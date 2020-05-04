@@ -5,3 +5,10 @@ helm list
 helm inspect values . > /tmp/nginx.values
 helm install --name=my-nginx . --values /tmp/nginx.values
 helm rollback my-nginx 2
+
+
+############# helm added to repo  ################################3333
+
+$ helm package my-app
+$ mv my-app-0.1.0.tgz helm-example
+$ helm repo index helm-example/ --url https://gree-gorey.github.io/helm-example/
