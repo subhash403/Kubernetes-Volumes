@@ -1,0 +1,11 @@
+kubectl get nodes  -o jsonpath={.items[*].status.addresses[?\(@.type==\"InternalIP\"\)].address}
+
+https://kubernetes.github.io/ingress-nginx/user-guide/monitoring/
+http://dockerlabs.collabnix.com/kubernetes/beginners/Kubernetes_monitoring_alerting/Prometheus_Monitoring_On_Kubernetes_Cluster.html
+Prometheus:-
+kubectl apply --kustomize github.com/kubernetes/ingress-nginx/deploy/prometheus/
+
+Grafana:
+kubectl apply --kustomize github.com/kubernetes/ingress-nginx/deploy/grafana/
+
+

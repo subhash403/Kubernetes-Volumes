@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nfs
+  name: subhash-prometheus-alertmanager
 spec:
   accessModes:
     - ReadWriteMany

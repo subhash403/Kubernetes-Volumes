@@ -1,0 +1,21 @@
+kubectl get nodes  -o jsonpath={.items[*].status.addresses[?\(@.type==\"InternalIP\"\)].address}
+
+https://kubernetes.github.io/ingress-nginx/user-guide/monitoring/
+
+Metrics:
+https://www.replex.io/blog/kubernetes-in-production-the-ultimate-guide-to-monitoring-resource-metrics
+
+http://dockerlabs.collabnix.com/kubernetes/beginners/Kubernetes_monitoring_alerting/Prometheus_Monitoring_On_Kubernetes_Cluster.html
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-kubernetes-monitoring-stack-with-prometheus-grafana-and-alertmanager-on-digitalocean
+https://github.com/do-community/doks-monitoring/tree/master/manifest
+
+Prometheus:-
+kubectl apply --kustomize github.com/kubernetes/ingress-nginx/deploy/prometheus/
+
+Grafana:
+kubectl apply --kustomize github.com/kubernetes/ingress-nginx/deploy/grafana/
+
+# Metrics Server :-
+git clone https://github.com/kubernetes-incubator/metrics-server
+cd metrics-server/deploy
+kubectl create -f 1.8+/
