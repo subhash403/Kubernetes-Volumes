@@ -1,0 +1,47 @@
+# Do one of the following (depending on the version sometimes all may not works)
+
+# 1. `ansible-playbook -e 'host_key_checking=False' splunk.yml`
+# 2. Or `export ANSIBLE_HOST_KEY_CHECKING=False`
+# 3. Or create /etc/ansible/ansible.cfg file with following contents (without #)
+
+# [defaults]
+# host_key_checking = False
+
+---
+- hosts: kubernetes
+  become: yes
+  remote_user: root
+  tasks:
+
+  - copy: src=hostname.sh dest=/etc/init.d/hostname mode=0755
+
+  - name: Check if splunk universal forwarder is installed
+    command: dpkg-query -W splunkforwarder
+    register: splunk_check_deb
+    failed_when: splunk_check_deb.rc > 1
+    changed_when: splunk_check_deb.rc == 1
+
+  - name: download splunk universal forwarder deb package
+    get_url:
+      url: 'https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=6.5.0&product=universalforwarder&filename=splunkforwarder-6.5.0-59c8927def0f-linux-2.6-amd64.deb&wget=true'
+      dest: /tmp
+    when: splunk_check_deb.rc == 1
+
+  - name: Install splunk universal forwarder
+    apt: deb="/tmp/splunkforwarder-6.5.0-59c8927def0f-linux-2.6-amd64.deb"
+    when: splunk_check_deb.rc == 1
+  
+  - name: Start the Splunk universal forwarder agent
+    command: /opt/splunkforwarder/bin/splunk start --accept-license
+
+  - name: Distribute splunk config
+    template: src="inputs.j2" dest="/opt/splunkforwarder/etc/system/local/inputs.conf"
+  
+  - name: Distribute splunk output.conf 
+    template: src="outputs.j2" dest="/opt/splunkforwarder/etc/system/local/outputs.conf"
+  
+  - name: Edit hostname in splunk config
+    command: /etc/init.d/hostname
+
+  - name: Restart splunk universal forwarder
+    command: /opt/splunkforwarder/bin/splunk restart 

@@ -1,0 +1,91 @@
+[default]
+host = <SPLUNK_HOSTNAME>
+
+## containerd event logs
+
+[monitor:///run/containerd/events.log]
+source=containerd-events
+sourcetype=events
+index=oneapp
+recursive = false
+
+##kube controller manager logs
+
+[monitor:///var/log/kube-controller-manager.log]
+source=controller-manager
+sourcetype=controllermanager
+index=oneapp
+recursive = false
+
+## user logs
+
+[monitor:///var/log/user.log]
+source=user-logs
+sourcetype=user
+index=oneapp
+recursive = false
+
+## kube proxy logs
+
+[monitor:///var/log/kube-proxy.log]
+source=kube-proxy
+sourcetype=kubeproxy
+index=oneapp
+recursive = false
+
+
+## docker daemon logs
+
+[monitor:///var/log/daemon.log]
+source=docker-daemon
+sourcetype=daemon
+index=oneapp
+recursive = false
+
+## kube scheduler logs
+
+[monitor:///var/log/kube-scheduler.log]
+source=kube-scheduler
+sourcetype=kubescheduler
+index=oneapp
+recursive = false
+
+## kube-apiserver logs
+
+[monitor:///var/log/kube-apiserver.log]
+source=kube-apiserver
+sourcetype=kubeapiserver
+index=oneapp
+recursive = false
+
+## etcd events
+
+[monitor:///var/log/etcd-events.log]
+source=etcd-events
+sourcetype=etcdevents
+index=oneapp
+recursive = false
+
+##etcd logs
+
+[monitor:///var/log/etcd.log]
+source=etcdlog
+sourcetype=etcd
+index=oneapp
+recursive = false
+
+## container jsonlogs
+
+[monitor:///var/lib/docker/*/*.log/]
+source=dockercontainers-jsonlog
+sourcetype=containerjsonlogs
+index=oneapp
+recursive = false
+
+## container logs
+
+[monitor:///var/log/containers/*.log]
+source=containers
+sourcetype=containerlog
+index=oneapp
+recursive = false

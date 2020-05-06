@@ -1,0 +1,10 @@
+[tcpout]
+defaultGroup = defaultssl
+[tcpout:defaultssl]
+compressed = true
+server = 71.74.188.44:9996
+sslVersions = tls1.2
+sslCertPath = /opt/splunkforwarder/etc/auth/server.pem
+sslPassword = password
+sslRootCAPath = /opt/splunkforwarder/etc/auth/ca.pem
+sslVerifyServerCert = false
