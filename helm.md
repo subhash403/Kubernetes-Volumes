@@ -13,7 +13,7 @@ helm install --name=my-nginx . --values /tmp/nginx.values
 helm rollback my-nginx 2
 
 
-# ############ helm added to repo  ################################3333
+# #### helm added to repo  ################
 
 
 # `helm package tomcat`
