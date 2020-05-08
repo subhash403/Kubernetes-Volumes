@@ -9,6 +9,20 @@ helm rollback my-nginx 2
 
 ############# helm added to repo  ################################3333
 
-$ helm package my-app
-$ mv my-app-0.1.0.tgz helm-example
-$ helm repo index helm-example/ --url https://gree-gorey.github.io/helm-example/
+
+helm package tomcat
+
+echo "# helm-tomcat" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/subhash403/helm-tomcat.git
+git push -u origin master
+
+#For Creating index.yaml file for helm repo
+helm repo index --url https://subhash403.github.io/helm-tomcat/ .
+
+#url path of the index.yaml form github
+helm repo add tomcat https://raw.githubusercontent.com/subhash403/helm-tomcat/master/
+
+
