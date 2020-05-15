@@ -1,0 +1,15 @@
+git clone https://github.com/coreos/prometheus-operator.git
+
+cd prometheus-operator/contrib/kube-prometheus 
+
+kubectl apply -f manifests/
+
+
+or 
+
+https://github.com/coreos/kube-prometheus/tree/master/manifests
+
+coreos:- 
+https://coreos.com/operators/prometheus/docs/latest/user-guides/cluster-monitoring.html
+
+https://github.com/coreos/prometheus-operator/blob/master/Documentation/user-guides/getting-started.md
