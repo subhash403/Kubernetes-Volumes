@@ -1,0 +1,8 @@
+Elk using helm:
+https://logz.io/blog/deploying-the-elk-stack-on-kubernetes-with-helm/
+
+elk with yamls:- 
+https://medium.com/@tharangarajapaksha/elk-stack-in-k8s-cluster-13bb509185e0
+
+ELK yamls in gitlab
+https://gitlab.com/ndevox/kubernetes-elastic-logging/-/tree/master

@@ -1,0 +1,21 @@
+Local Docker registry 
+
+docker run -d -p 5000:5000 --restart=always --name registry -v docker:/var/lib/registry registry:2
+
+playjenkins github
+
+
+helm search jenkins 
+
+stable/jenkins 1.5.1
+
+helm inspect values stable/jenkins  > /tmp/jenkins.values
+
+need to change the admin password in the values file 
+
+
+Service type to NodePort
+
+set nodePort to specific
+
+

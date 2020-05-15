@@ -1,6 +1,10 @@
+https://www.mirantis.com/blog/how-install-kubernetes-kubeadm/
 https://tachingchen.com/blog/kubernetes-rolling-update-with-deployment/
 
 kubectl api-resources -o wide
+
+kubectl create service <service type> <service name> --tcp=80:80
+
 
 kubectl set image deployment <deployment> <container>=<image> --record
 kubectl replace -f <yaml> --record

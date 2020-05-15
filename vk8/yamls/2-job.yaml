@@ -3,6 +3,7 @@ kind: Job
 metadata:
   name: helloworld
 spec:
+  ttlSecondsAfterFinished: 25
   template:
     spec:
       containers:
