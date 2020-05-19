@@ -9,3 +9,5 @@ Grafana:
 kubectl apply --kustomize github.com/kubernetes/ingress-nginx/deploy/grafana/
 
 
+prometheus:
+https://github.com/coreos/prometheus-operator/blob/master/Documentation/user-guides/getting-started.md

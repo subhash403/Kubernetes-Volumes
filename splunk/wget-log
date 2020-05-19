@@ -1,0 +1,11 @@
+--2020-05-18 18:35:08--  https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64
+Resolving www.splunk.com (www.splunk.com)... 123.176.32.18, 123.176.32.16
+Connecting to www.splunk.com (www.splunk.com)|123.176.32.18|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 0
+Saving to: ‘DownloadActivityServlet?architecture=x86_64’
+
+                   DownloadActivitySe     [<=>                                                                     ]       0  --.-KB/s               DownloadActivityServlet?architecture=     [ <=>                                                                    ]       0  --.-KB/s    in 0s      
+
+2020-05-18 18:35:10 (0.00 B/s) - ‘DownloadActivityServlet?architecture=x86_64’ saved [0/0]
+

@@ -1,0 +1,2 @@
+sudo kubectl create secret generic logdna-agent-key --from-literal=logdna-agent-key=828781d50f8c70013f7b244a138fe70e
+sudo kubectl create -f https://raw.githubusercontent.com/logdna/logdna-agent/master/logdna-agent-ds.yaml
