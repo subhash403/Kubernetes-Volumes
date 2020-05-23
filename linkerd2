@@ -1,0 +1,9 @@
+# Installing Linkerd and configure 
+
+
+
+# For Canary 
+https://linkerd.io/2/tasks/canary-release/
+
+#For canary using Linkerd and istio 
+https://glasnostic.com/blog/how-canary-deployments-work-1-kubernetes-istio-linkerd
