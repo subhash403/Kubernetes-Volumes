@@ -1,0 +1,49 @@
+https://cert-manager.io/docs/installation/kubernetes/
+
+# Create the namespace for cert-manager:
+	
+	kubectl create namespace cert-manager
+
+# Add the Jetstack Helm repository:
+
+	helm repo add jetstack https://charts.jetstack.io
+
+# Update your local Helm chart repository cache:
+
+	helm repo update
+
+# installing CRDs with kubectl
+
+
+# Kubernetes 1.15+
+		
+	kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.15.0/cert-manager.crds.yaml
+
+# Kubernetes <1.15
+	
+	 kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.15.0/cert-manager-legacy.crds.yaml
+
+# To install the cert-manager Helm chart:
+
+# Helm v3+
+$ helm install \
+  cert-manager jetstack/cert-manager \
+  --namespace cert-manager \
+  --version v0.15.0 \
+  # --set installCRDs=true
+
+# Helm v2
+$ helm install \
+  --name cert-manager \
+  --namespace cert-manager \
+  --version v0.15.0 \
+  jetstack/cert-manager \
+  # --set installCRDs=true
+  
+# From Video : 
+
+helm install \
+  --name cert-manager \
+  --namespace kube-system \
+  stable/cert-manager
+

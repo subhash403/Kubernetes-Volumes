@@ -1,9 +1,83 @@
 # Installing Linkerd and configure 
+kubectl version --short
+
+#Install the CLI
+curl -sL https://run.linkerd.io/install | sh
+
+export PATH=$PATH:$HOME/.linkerd2/bin
+
+#Check linkerd version
+linkerd version
+
+# linkerd install --ignore-cluster|kubectl apply -f 
+linkerd install |kubectl apply -f -
+
+#Validate your Kubernetes cluster
+linkerd check --pre
+
+# Demo Books app 
+#
+# https://linkerd.io/2/tasks/books/
+kubectl create ns booksapp && \
+  curl -sL https://run.linkerd.io/booksapp.yml \
+  | kubectl -n booksapp apply -f -
+
+#FOR REGISTERING THE ROLL VERSION
+kubectl -n booksapp rollout status deploy webapp
+
+# Mesh the entire namespace 
+kubectl get -n booksapp deploy -o yaml \
+  | linkerd inject - \
+  | kubectl apply -f -
+
+# Port forward 
+
+kubectl -n booksapp port-forward svc/webapp 7000 &
 
 
 
-# For Canary 
+# Linkerd Canary 
+#Flagger
+kubectl apply -k github.com/weaveworks/flagger//kustomize/linkerd
+
+#create and namesapce inject the linkerd to test 
+kubectl create ns test
+kubectl annotate namespace test linkerd.io/inject=enabled
+
+#Install the load testing service to generate traffic during the canary analysis:
+
+kubectl apply -k github.com/weaveworks/flagger//kustomize/tester
+
+#Create a deployment and a horizontal pod autoscaler:
+
+kubectl apply -k github.com/weaveworks/flagger//kustomize/podinfo
+
+#For canary 
+# https://docs.flagger.app/tutorials/linkerd-progressive-delivery
+#
+kubectl apply -f ~/k8volumes/linkerd_canary/pod-info-canary.yaml
+
+#Trigger a canary deployment by updating the container image:
+kubectl -n test set image deployment/podinfo \
+podinfod=stefanprodan/podinfo:3.1.1
+
+
+#Flagger detects that the deployment revision changed and starts a new rollout:
+kubectl -n test describe canary/podinfo
+
+#For monitoring canaries 
+watch kubectl get canaries --all-namespaces
+
+
+
+
+#################################### For Canary ############################################################################################
 https://linkerd.io/2/tasks/canary-release/
 
 #For canary using Linkerd and istio 
 https://glasnostic.com/blog/how-canary-deployments-work-1-kubernetes-istio-linkerd
+
+# 
+https://thenewstack.io/linkerd-2-0-the-service-mesh-for-service-owners-platform-architects-sres/
+
+
