@@ -1,3 +1,16 @@
+# Nginx ingress Installtion
+#https://kubernetes.github.io/ingress-nginx/deploy/
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/baremetal/deploy.yaml
+
+#First inject the linkerd proxy into the IngressController, in our example we will use Nginx for Ingress.
+#kubectl get deploy/<name of your ingress controller> -o yaml | linkerd inject - | kubectl apply -f -
+
+kubectl -n ingress-nginx get deploy/ingress-nginx-controller  -o yaml | linkerd inject - | kubectl apply -f -
+
+#To check if the ingress controller pods have started, run the following command
+kubectl get pods -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx --watch
+
 # Installing Linkerd and configure 
 kubectl version --short
 
@@ -35,7 +48,7 @@ kubectl get -n booksapp deploy -o yaml \
 kubectl -n booksapp port-forward svc/webapp 7000 &
 
 
-
+##################################### For Automation Canary ############################################################################################
 # Linkerd Canary 
 #Flagger
 kubectl apply -k github.com/weaveworks/flagger//kustomize/linkerd
@@ -69,9 +82,20 @@ kubectl -n test describe canary/podinfo
 watch kubectl get canaries --all-namespaces
 
 
+########################################  For Manual Canary #################################################################
+#https://www.tarunpothulapati.com/posts/traffic-splitting-linkerd/
 
+#Sample app url 
+https://github.com/istio/istio/tree/master/samples/bookinfo
 
-#################################### For Canary ############################################################################################
+cd istio/samples/bookinfo/platform/kube
+
+linkerd inject ./samples/bookinfo/platform/kube/bookinfo.yaml | kubectl apply -f
+
+linkerd inject bookinfo.yaml |kubectl apply -f -
+
+################################################################################################################
+
 https://linkerd.io/2/tasks/canary-release/
 
 #For canary using Linkerd and istio 
