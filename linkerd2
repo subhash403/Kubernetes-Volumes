@@ -104,4 +104,6 @@ https://glasnostic.com/blog/how-canary-deployments-work-1-kubernetes-istio-linke
 # 
 https://thenewstack.io/linkerd-2-0-the-service-mesh-for-service-owners-platform-architects-sres/
 
-
+# Linkerd Commands 
+#
+# linkerd -n default tap deploy
