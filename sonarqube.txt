@@ -1,0 +1,51 @@
+Quality Gates:- 
+
+   A Quality Gate is a set of measure-based, Boolean conditions. It helps you know immediately whether your projects are production-ready. Ideally, all projects will use the same quality gate. Each project's Quality Gate status is displayed prominently on its homepage.
+   
+   
+	Quality Gates can be defined as a set of threshold measures set on your project like Code Coverage, Technical Debt Measure, Number of Blocker/Critical issues, Security Rating/ Unit Test Pass Rate and more. To pass the Quality Gates, the project should pass through each of the thresholds set.
+
+
+Qualityprofiles:
+			Quality profiles are the collection of rules to apply during an analysis,For each language there is default profile .All projects not explicitly assigned to some other profile will be analyzwd with the default
+			Blocker
+			Critical
+			Major
+			minor
+			info
+
+
+Reliability:-  (Issues in this domain mark code where you will get behavior other than what was expected.)
+		Bugs:- A coding error that will break your code and needs to be fixed immediately.
+
+Security: (Issues in this domain mark potential weaknesses to hackers.)
+		vulnerabilities:- Code that can be exploited by hackers.
+		Security Hotspots:- Security-sensitive code that requires manual review to assess whether or not a vulnerability exists.
+
+Maintainability:- (Issues in this domain mark code that will be more difficult to update competently than it should.)
+			Debt:- The estimated time it will take to fix all Code Smells.
+			Code smells:- Code that is confusing and difficult to maintain.
+
+Coverage:-
+			Coverage:- The percentage of lines of code covered by tests.
+			
+Duplications:- 
+			Duplications:- Identical lines of code.
+			Duplicated Blocks:- The number of duplicated blocks of lines of code.
+
+Sizes:- 	
+
+Complexity:- 
+			Cyclomatic Complexity
+			Cognitive Complexity
+
+Issues:- 
+		Open confirmed
+		Closed	Resolved
+
+
+
+
+
+
+

@@ -3,3 +3,19 @@ https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/
 https://www.fosstechnix.com/install-sonarqube-on-ubuntu/
 
 https://stackoverflow.com/questions/46976567/please-provide-compiled-classes-of-your-project-with-sonar-java-binaries
+
+mvn sonar:sonar   -Dsonar.projectKey=hello_java   -Dsonar.host.url=http://192.168.0.105:9000   -Dsonar.login=53deb678cd9a21fa9bdfdb08977a3d1eb364bcd9
+
+
+sonar scanner 
+
+sudo wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.2.0.1227-linux.zip
+
+unzip sonar-scanner-cli-3.2.0.1227-linux.zip
+
+mv sonar-scanner-3.2.0.1227-linux /opt/sonar_scanner 
+
+
+https://github.com/ValaxyTech/DevOpsDemos/blob/master/SonarQube/Sonar_Integration_with_Jenkins.MD
+
+https://community.sonarsource.com/t/error-while-trying-to-run-sonar-scanner/1300/6
