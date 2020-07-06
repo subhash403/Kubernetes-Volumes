@@ -1,0 +1,12 @@
+https://www.linode.com/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/
+
+docker run -d -p 80:80 -p 443:443 \
+  --restart=unless-stopped \
+  -v /opt/rancher:/var/lib/rancher \
+  rancher/rancher:latest
+
+kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user admin
+
+kubectl apply -f https://localhost/v3/import/mvrjsnfzr75hh9zc7bb42jgl5fkl9tqkds6jbphcdk6nqr4vczgcmd.yaml
+
+curl --insecure -sfL https://localhost/v3/import/mvrjsnfzr75hh9zc7bb42jgl5fkl9tqkds6jbphcdk6nqr4vczgcmd.yaml | kubectl apply -f -

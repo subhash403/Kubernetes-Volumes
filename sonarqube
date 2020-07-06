@@ -6,6 +6,8 @@ https://stackoverflow.com/questions/46976567/please-provide-compiled-classes-of-
 
 mvn sonar:sonar   -Dsonar.projectKey=hello_java   -Dsonar.host.url=http://192.168.0.105:9000   -Dsonar.login=53deb678cd9a21fa9bdfdb08977a3d1eb364bcd9
 
+/opt/sonar_scanner//bin/sonar-scanner -X -Dsonar.projectKey=jb-hello-world-maven   -Dsonar.host.url=http://192.168.0.105:9000   -Dsonar.login=5536a83fead23554d738661587d0350c1efa9d3a  -Dsonar.sources=. -Dsonar.java.binaries=src/main/java/hello/
+
 
 sonar scanner 
 
